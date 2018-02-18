@@ -4,15 +4,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/main.css">
+
+  <title>Stock Tracker</title>
+
 </head>
 
 <body>
-  <div>
-    <p>Hello World!</p>
+  <div class="adjustChart">
+    <canvas id="myChart" width="800" height="600"></canvas>
+    <p>Please search for your favorite stock</p>
+    <form action="/stock" method="get">
+      <div id="getData">
+        <input class="stock-search" type="text" placeholder="e.g. AAPL" name="search">
+        <button type="submit" id="show_stock_btn" class="btn btn-primary">Show Stock</button>
+      </div>
+  </div>
+  </form>
   </div>
 
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/main.js"></script>
 
 </html>
