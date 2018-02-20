@@ -9,11 +9,12 @@ const quandl = new Quandl({
 
 
 exports.getStock = (req, res, next) => {
-  const {search} = req.query
-;
+  const {search} = req.query;
+  // TODO: #1 Add check here for blank and pre-existing queries
   quandl.dataset({
     source: 'WIKI',
-    table: search
+    //TODO: #1 Replace table with search variable once check is in place.
+    table: 'FB'
   }, {
     order: 'desc',
     exclude_column_names: true,
@@ -23,17 +24,19 @@ exports.getStock = (req, res, next) => {
   }, function (err, response) {
     if (err)
       throw err;
+  // TODO: #1
     let stockData = JSON.parse(response);
     let symbol = stockData.dataset.dataset_code;
     let data = stockData.dataset.data;
     const newStock = new Stock({
       symbol,
       data
-    })
+    });
+    // TODO: #1
     newStock.save(err => {
       if (err)
         return next(err)
-    })
+    });
     Stock.find({}, (err, stocks) => {
       if (err)
         return next(err)

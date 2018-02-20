@@ -3,7 +3,9 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
 const routes = require('./routes');
-const app = express();
+const app = require('express')();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/stocktrack');
 
@@ -14,7 +16,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 const port = process.env.PORT || 3000;
-app.listen(port,()=>{
-console.log('Express server running on port', port);
 
+io.on('connection', function(){ /* … */ });
+server.listen(port, () => {
+   console.log('Server running on port', port);
 });
