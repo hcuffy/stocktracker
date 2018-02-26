@@ -12,7 +12,9 @@
 </head>
 
 <body>
-  <div class="adjustChart">
+  <button class="btn btn-primary" id="increaseNumber">Increse Number</button>
+  <h1 id="numberText">0</h1>
+  <!-- <div class="adjustChart">
     <canvas id="myChart" width="800" height="600"></canvas>
     <p>Please search for your favorite stock</p>
     <form action="/stock" method="get">
@@ -21,13 +23,14 @@
         <button type="submit" id="show_stock_btn" class="btn btn-primary">Show Stock</button>
       </div>
   </div>
-  </form>
+  </form> -->
   </div>
 
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 <script type="text/javascript" src="/main.js"></script>
 
 </html>

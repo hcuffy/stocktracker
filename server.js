@@ -7,6 +7,7 @@ const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
+
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/stocktrack');
 
 app.set('view engine', 'ejs');
@@ -17,7 +18,15 @@ app.use('/', routes);
 
 const port = process.env.PORT || 3000;
 
-io.on('connection', function(){ /* … */ });
+
+
+io.on('connection', function (socket) {
+  console.log('connected');
+  socket.on('added stock', function () {
+    io.emit('update');
+  });
+});
+
 server.listen(port, () => {
-   console.log('Server running on port', port);
+  console.log('Server running on port', port);
 });
