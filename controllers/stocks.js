@@ -88,7 +88,7 @@ exports.getStock = (req, res, next) => {
           };
           hold.push(priceOBJ);
         }
-        let colorPool = ['red', 'blue', 'green', 'black', 'Purple', 'Yellow'];
+        let colorPool = ['red', 'blue', 'green', 'black', 'purple', 'y‚ellow'];
         let lineColor = colorPool[Math.floor(Math.random() * 5)];
 
         let stockData = {
@@ -169,7 +169,7 @@ exports.updateUser = (req, res, next) => {
         };
         hold.push(priceOBJ);
       }
-      let colorPool = ['red', 'blue', 'green', 'black', 'Purple', 'Yellow'];
+      let colorPool = ['red', 'blue', 'green', 'black', 'purple', 'yellow'];
       let lineColor = colorPool[Math.floor(Math.random() * 5)];
 
       let stockData = {

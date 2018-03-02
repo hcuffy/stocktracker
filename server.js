@@ -18,11 +18,9 @@ app.use('/', routes);
 
 const port = process.env.PORT || 3000;
 
-
-
 io.on('connection', function (socket) {
-  console.log('connected');
-  socket.on('added stock', function () {
+console.log('Connected');
+  socket.on('added', function () {
     io.emit('update');
   });
 });
