@@ -9,4 +9,4 @@ const stocksController = require('../controllers/stocks');
 router.get('/stock', stocksController.getStock);
 router.get('/', stocksController.updateUser);
 router.post('/remove/:id', stocksController.removeStock);
-module.exports = router
+module.exports = router;

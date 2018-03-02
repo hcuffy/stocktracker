@@ -6,7 +6,7 @@ const routes = require('./routes');
 const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-
+const Stock = require('./models/stock');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/stocktrack');
 
@@ -21,7 +21,11 @@ const port = process.env.PORT || 3000;
 io.on('connection', function (socket) {
 console.log('Connected');
   socket.on('added', function () {
-    io.emit('update');
+    Stock.find({}, function(err, docs) {
+      if (err) throw err;
+      io.emit('update', {data: docs});
+    });
+    // io.emit('update');
   });
 });
 

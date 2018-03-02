@@ -117,13 +117,11 @@ exports.getStock = (req, res, next) => {
 }
 
 exports.updateUser = (req, res, next) => {
-  const {
-    search
-  } = req.query;
+
   Stock.find({}, (err, stocks) => {
     if (err)
       return next(err)
-
+      
     let type = 'line';
     let dbData = {};
     let options = {
