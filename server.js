@@ -16,18 +16,33 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
-const port = process.env.PORT || 3000;
-
 io.on('connection', function (socket) {
-console.log('Connected');
+  console.log('Connected');
+
   socket.on('added', function () {
-    Stock.find({}, function(err, docs) {
+    Stock.find({}, function (err, docs) {
       if (err) throw err;
-      io.emit('update', {data: docs});
+      io.emit('update', {
+        data: docs
+      });
     });
-    // io.emit('update');
+  });
+
+  socket.on('remove', function () {
+    Stock.find({}, function (err, docs) {
+      if (err) throw err;
+      io.emit('update', {
+        data: docs
+      });
+    });
+  });
+
+  socket.on('disconnect', function (data) {
+    console.log('Someone Disconnected');
   });
 });
+
+const port = process.env.PORT || 3000;
 
 server.listen(port, () => {
   console.log('Server running on port', port);

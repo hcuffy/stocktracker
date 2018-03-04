@@ -3,6 +3,16 @@ body {
   color: black;
 }
 
+form {
+  padding-top: 5px;
+}
+
+.mainHeading {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 30px;
+}
+
 .adjustChart {
   width: 800px;
   height: 600px;
@@ -40,6 +50,10 @@ body {
   border-width: 1px;
   border-color: black;
   padding-left: 10px;
+}
+
+.symbolSpan:hover {
+  background: red;
 }
 
 .glyphicon-remove {

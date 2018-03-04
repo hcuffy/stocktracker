@@ -6,29 +6,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
   <title>Stock Tracker</title>
-
 </head>
 
 <body>
-  <button class="btn btn-primary" id="increaseNumber">Increse Number</button>
-  <h1 id="numberText">0</h1>
-  <!-- <div class="adjustChart">
-    <canvas id="myChart" width="800" height="600"></canvas>
-    <p>Please search for your favorite stock</p>
-    <form action="/stock" method="get">
+
+  <p class="mainHeading">Track your stocks.</p>
+
+  <div class="adjustChart">
+
+    <canvas id="myChartTwo" width="800" height="600"></canvas>
+    <script>
+      var ctx = document.getElementById("myChartTwo");
+      var myChartTwo = new Chart(ctx, {
+        type: <%- JSON.stringify(type) %>,
+        data: <%- JSON.stringify(dbData) %>,
+        options: <%- JSON.stringify(options) %>
+      });
+    </script>
+
+    <form action="/stock" method="get" name="searchForm">
       <div id="getData">
         <input class="stock-search" type="text" placeholder="e.g. AAPL" name="search">
-        <button type="submit" id="show_stock_btn" class="btn btn-primary">Show Stock</button>
+        <button type="submit" id="show_stock" class="btn btn-primary">Show Stock</button>
+        <p>Search for your stock.</p>
       </div>
+    </form>
+
   </div>
-  </form> -->
+
+  <div class="theStocks">
+    <p>List of stocks.</p>
+    <% for (var i = 0; i < dbData.datasets.length; i++) { %>
+
+      <span class="symbolSpan" id="<%=dbData.datasets[i].label%>"><%=dbData.datasets[i].label%></span>
+
+      <% } %>
   </div>
 
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.slim.js"></script>
 <script type="text/javascript" src="/main.js"></script>
