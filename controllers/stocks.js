@@ -76,10 +76,10 @@ exports.getStock = (req, res, next) => {
           }
         };
         let allDatasets = [];
-        for (i = 0; i < stocks.length; i++) {
+        for (var i = 0; i < stocks.length; i++) {
           let hold = [];
 
-          for (j = 0; j < stocks[i].data.length; j++) {
+          for (var j = 0; j < stocks[i].data.length; j++) {
             let priceOBJ = {
               x: stocks[i].data[j][0],
               y: stocks[i].data[j][1]
@@ -156,10 +156,10 @@ exports.updateUser = (req, res, next) => {
       }
     };
     let allDatasets = [];
-    for (i = 0; i < stocks.length; i++) {
+    for (var i = 0; i < stocks.length; i++) {
       let hold = [];
 
-      for (j = 0; j < stocks[i].data.length; j++) {
+      for (var j = 0; j < stocks[i].data.length; j++) {
         let priceOBJ = {
           x: stocks[i].data[j][0],
           y: stocks[i].data[j][1]
